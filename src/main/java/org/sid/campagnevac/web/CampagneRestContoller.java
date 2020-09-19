@@ -1,15 +1,28 @@
 package org.sid.campagnevac.web;
 
 import lombok.Data;
+import org.sid.campagnevac.service.ICrudService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.sid.campagnevac.dao.EnqueteRepository;
 import org.sid.campagnevac.entities.Enquete;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
+import java.util.List;
+import org.sid.campagnevac.service.ICampagneInitService;
 
 @RestController
-public class CampagneRestContoller {
-    private EnqueteRepository enqueteRepository;
+public class CampagneRestContoller<T,ID> {
+
+    @Autowired
+    private ICrudService<T,ID> service;
+    @PostMapping("/all")
+    public ResponseEntity<List<T>> addAll(@RequestBody List<T> list) {
+        service.saveAll(list);
+        return new ResponseEntity<>(list, HttpStatus.ACCEPTED);
+    }
     /*@PostMapping("/AjouterDonnesDemographie")
     public Enquete ajoutes;
     public Enquete AjouterDonnesDemographie(@RequestBody EnqueteForm enqueteform){
@@ -30,6 +43,8 @@ public class CampagneRestContoller {
         private int nb1259;
         private int popvisee;
         private Long iddemo;
+
     }*/
+
 
 }

@@ -12,8 +12,9 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import java.util.List;
 import org.springframework.data.domain.Pageable;
 
-@RepositoryRestResource
+
 @CrossOrigin("*")
+@RepositoryRestResource
 public interface DemographieRepository extends JpaRepository<Demographie,Long> {
     @RestResource(path = "/Bynamedemo")
     public List<Demographie> findBynameContains(@Param("mc") String nm);

@@ -1,8 +1,6 @@
 package org.sid.campagnevac;
 
-import org.sid.campagnevac.entities.AppRole;
-import org.sid.campagnevac.entities.Demographie;
-import org.sid.campagnevac.entities.Enquete;
+import org.sid.campagnevac.entities.*;
 import org.sid.campagnevac.service.AccountService;
 import org.sid.campagnevac.service.ICampagneInitService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -47,7 +45,7 @@ public class CampagneVacApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-		restConfiguration.exposeIdsFor(Demographie.class, Enquete.class);
+		restConfiguration.exposeIdsFor(Demographie.class, Enquete.class, Campagne.class, Vaccination.class,Moughataa.class);
 		iCampagneInitService.initDemographie();
 		iCampagneInitService.initWilaya();
 		iCampagneInitService.initMoughataa();

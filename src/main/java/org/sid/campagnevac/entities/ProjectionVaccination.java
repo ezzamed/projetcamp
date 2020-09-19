@@ -10,5 +10,5 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 public interface ProjectionVaccination {
     public Long getId();
     public int getNombre();
-    public Moughataa   getMoughataa ();
+    public Moughataa getMoughataa ();
 }

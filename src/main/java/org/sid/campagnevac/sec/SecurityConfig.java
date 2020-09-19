@@ -28,11 +28,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable();
         http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
-        http.authorizeRequests().antMatchers("/login/**","/enquetes/**","/wilayas/**","/campagnes/**","/moughataas/**","/demographies/**","/vaccinations/**").permitAll();
+        http.authorizeRequests().antMatchers("/login/**","/enquetes/**","/wilayas/**","/campagnes/**","/moughataas/**","/demographies/**","/vaccinations/**","/all/**","/demogs/**","/GET/**","/DELETE/**").permitAll();
         http.authorizeRequests().antMatchers("/appUsers/**","/appRoles/**").hasAuthority("ADMIN");
         http.authorizeRequests().anyRequest().authenticated();
         http.addFilter(new JWTAuthenticationFilter(authenticationManager()));
         http.addFilterBefore(new JWTAuthorizationFiler(), UsernamePasswordAuthenticationFilter.class);
 
     }
+
 }
